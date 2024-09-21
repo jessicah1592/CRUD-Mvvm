@@ -1,0 +1,43 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Ejercicio_CRUD_Mvvm"
+             x:Class="Ejercicio_CRUD_Mvvm.MainPage"
+             Title="CRUD Proveedores">
+    <ContentPage.BindingContext>
+        <local:ProveedorViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="20">
+        <Label Text="Nombre" />
+        <Entry Text="{Binding NuevoProveedor.Nombre}" Placeholder="Nombre del proveedor" />
+
+        <Label Text="Dirección" />
+        <Entry Text="{Binding NuevoProveedor.Direccion}" Placeholder="Dirección del proveedor" />
+
+        <Label Text="Teléfono" />
+        <Entry Text="{Binding NuevoProveedor.Telefono}" Placeholder="Teléfono" Keyboard="Telephone" />
+
+        <Label Text="Correo" />
+        <Entry Text="{Binding NuevoProveedor.Correo}" Placeholder="Correo Electrónico" Keyboard="Email" />
+
+        <Label Text="Producto Asociado" />
+        <Entry Text="{Binding NuevoProveedor.ProductoAsociado}" Placeholder="Producto Asociado" />
+
+        <Button Text="Agregar Proveedor" Command="{Binding AgregarProveedorCommand}" />
+
+        <!-- Lista de proveedores -->
+        <CollectionView ItemsSource="{Binding Proveedores}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Label Text="{Binding Nombre}" FontAttributes="Bold"/>
+                        <Label Text="{Binding Direccion}" />
+                        <Label Text="{Binding Telefono}" />
+                        <Label Text="{Binding Correo}" />
+                        <Label Text="{Binding ProductoAsociado}" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>
